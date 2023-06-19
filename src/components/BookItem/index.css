@@ -1,0 +1,19 @@
+.cover-image {
+  height: 200px;
+  width: 140px;
+  border-radius: 5px;
+  background-size: cover;
+}
+.book-card-details {
+  margin-left: 10px;
+}
+@media screen and (max-width: 768px) {
+  .cover-image {
+    height: 80%;
+    min-height: 150px;
+    width: 50%;
+    max-width: 140px;
+    max-height: 200px;
+    min-width: 120px;
+  }
+}

@@ -1,0 +1,12 @@
+.btn1 {
+  height: 30px;
+  width: 150px;
+  background-color: violet;
+  border-width: 0px;
+  border-radius: 10px;
+}
+.para1 {
+  font-size: 12px;
+  font-weight: 600;
+  color: red;
+}

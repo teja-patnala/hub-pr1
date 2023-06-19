@@ -1,0 +1,22 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  height: 35px;
+  width: 35px;
+  margin: 5px;
+  color: white;
+}
+.footer {
+  margin-left: 37%;
+}
+@media screen and (max-width: 768px) {
+  .icon {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+  }
+}

@@ -1,0 +1,38 @@
+.book-data-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.book-details {
+  width: 90%;
+  margin: auto;
+  max-width: 900px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(29, 27, 27);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.book-card-pic {
+  height: 200px;
+  width: 180px;
+  border-radius: 5px;
+  background-size: cover;
+}
+.book-details1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .book-details1 {
+    flex-direction: column;
+  }
+}

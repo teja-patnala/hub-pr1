@@ -66,7 +66,11 @@ const Header = props => {
             <Link to="/bookshelves" className="link-font">
               Bookshelves
             </Link>
-            <button className="logout-button" onClick={logout} type="button">
+            <button
+              className="logout-button"
+              onClick={logoutFunction}
+              type="button"
+            >
               Logout
             </button>
           </div>

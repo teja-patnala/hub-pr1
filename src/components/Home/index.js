@@ -51,7 +51,7 @@ class Home extends Component {
     }
     const settings1 = {
       dots: false,
-      slidesToShow: 2,
+      slidesToShow: 1,
       slidesToScroll: 1,
     }
     console.log(topRatedBooks)

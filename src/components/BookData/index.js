@@ -1,20 +1,20 @@
 import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {connect} from 'react-redux'
 import Header from '../Header'
 import LoadSpinner from '../LoaderSpinner'
 import Footer from '../Footer'
 import {BookPara1} from './styledComponents'
 
 class BookData extends Component {
-  state = {bookDetails: [], status: false}
-
   componentDidMount = () => {
     this.getTheClearBookData()
   }
 
   displayBookDetails = () => {
-    const {bookDetails} = this.state
+    const {book} = this.props
+    const {bookDetails} = book
     const {
       id,
       coverPic,
@@ -146,12 +146,19 @@ class BookData extends Component {
       title: data.book_details.title,
       aboutAuthor: data.book_details.about_author,
     }
-    this.setState({bookDetails: bookClearData, status: true})
+    const {dispatch} = this.props
+
+    dispatch({
+      type: 'BOOK',
+      payload: {bookDetails: bookClearData, status: true},
+    })
+    console.log(this.props)
   }
 
   render() {
-    const {bookDetails, status} = this.state
-    console.log(bookDetails, status)
+    const {book} = this.props
+    const {status} = book
+
     return (
       <div className="book-data-container">
         <Header />
@@ -171,4 +178,4 @@ class BookData extends Component {
     )
   }
 }
-export default BookData
+export default connect(store => store)(BookData)

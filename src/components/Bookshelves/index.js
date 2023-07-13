@@ -1,6 +1,7 @@
 import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {connect} from 'react-redux'
 import {
   BookshelvesMainContainer,
   UL,
@@ -36,13 +37,6 @@ const bookshelvesList1 = [
 ]
 
 class Login extends Component {
-  state = {
-    allBooksData: [],
-    filter: bookshelvesList1[0].value,
-    search: '',
-    status: false,
-  }
-
   text = bookshelvesList1[0].value
 
   componentDidMount = () => {
@@ -51,18 +45,30 @@ class Login extends Component {
 
   addFilter = async (a, b) => {
     this.text = b
-    await this.setState({filter: a})
+    const {dispatch} = this.props
+    await dispatch({
+      type: 'BOOKSHELF',
+      payload: {filter: a},
+    })
+
     this.getTheFilterBookList()
   }
 
   addSearch = async event => {
-    await this.setState({search: event.target.value})
+    const {dispatch} = this.props
+    console.log(event.target.value)
+    await dispatch({
+      type: 'BOOKSHELF',
+      payload: {search: event.target.value},
+    })
     this.getTheFilterBookList()
   }
 
   getTheFilterBookList = async () => {
-    const {filter, search} = this.state
+    const {bookshelf} = this.props
+    const {filter, search} = bookshelf
     const url = `https://apis.ccbp.in/book-hub/books?shelf=${filter}&search=${search}`
+    console.log(url)
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -80,11 +86,17 @@ class Login extends Component {
       authorName: eachItem.author_name,
       coverPic: eachItem.cover_pic,
     }))
-    this.setState({allBooksData: allData, status: true})
+    const {dispatch} = this.props
+    dispatch({
+      type: 'BOOKSHELF',
+      payload: {allBooksData: allData, status: true},
+    })
+    console.log(this.props)
   }
 
   render() {
-    const {allBooksData, status} = this.state
+    const {bookshelf} = this.props
+    const {allBooksData, status} = bookshelf
     const getTheUl = () => {
       if (allBooksData.length !== 0) {
         return (
@@ -106,7 +118,6 @@ class Login extends Component {
         </div>
       )
     }
-    console.log(allBooksData)
     return (
       <BookshelvesMainContainer>
         <Header />
@@ -153,4 +164,4 @@ class Login extends Component {
     )
   }
 }
-export default Login
+export default connect(store => store)(Login)

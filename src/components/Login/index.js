@@ -1,6 +1,7 @@
 import './index.css'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {connect} from 'react-redux'
 import {
   LoginContainer,
   LoginCard,
@@ -15,17 +16,23 @@ class Login extends Component {
   state = {username: '', password: '', text: '', loginStatus: false}
 
   addTextUser = event => {
-    this.setState({username: event.target.value})
+    const {dispatch} = this.props
+    dispatch({
+      type: 'LOGIN',
+      payload: event.target.value,
+    })
   }
 
   addTextPassword = event => {
-    this.setState({password: event.target.value})
+    const {dispatch} = this.props
+    dispatch({
+      type: 'LOGIN',
+      payload: event.target.value,
+    })
   }
 
   loginSuccess = jwtToken => {
     const {history} = this.props
-    console.log(history)
-    console.log(jwtToken)
     Cookies.set('jwt_token', jwtToken, {
       expires: 30,
       path: '/',
@@ -39,7 +46,8 @@ class Login extends Component {
 
   submitDetails = async event => {
     event.preventDefault()
-    const {username, password} = this.state
+    const {login} = this.props
+    const {username, password} = login
     const userDetails = {username, password}
     const apiUrl = 'https://apis.ccbp.in/login'
     const options = {
@@ -107,4 +115,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default connect(store => store)(Login)

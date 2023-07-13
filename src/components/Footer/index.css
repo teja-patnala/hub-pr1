@@ -10,9 +10,7 @@
   margin: 5px;
   color: white;
 }
-.footer {
-  margin-left: 37%;
-}
+
 @media screen and (max-width: 768px) {
   .icon {
     height: 30px;

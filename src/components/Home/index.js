@@ -3,6 +3,7 @@ import {Component} from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import {connect} from 'react-redux'
 import Cookies from 'js-cookie'
 import {HomeMainContainer, HomeMainHeading, HomePara} from './styledComponents'
 import Header from '../Header'
@@ -11,8 +12,6 @@ import TopRatedBooks from '../TopRatedBooks'
 import Footer from '../Footer'
 
 class Home extends Component {
-  state = {topRatedBooks: [], dataStatus: false}
-
   componentDidMount = () => {
     this.getTheBooksData()
   }
@@ -39,11 +38,17 @@ class Home extends Component {
       coverPic: item.cover_pic,
       title: item.title,
     }))
-    this.setState({topRatedBooks: allBooks, dataStatus: true})
+    const {dispatch} = this.props
+
+    dispatch({
+      type: 'HOME',
+      payload: {topRatedBooks: allBooks, dataStatus: true},
+    })
   }
 
   render() {
-    const {topRatedBooks, dataStatus} = this.state
+    const {home} = this.props
+    const {topRatedBooks, dataStatus} = home
     const settings = {
       dots: false,
       slidesToShow: 3,
@@ -51,10 +56,9 @@ class Home extends Component {
     }
     const settings1 = {
       dots: false,
-      slidesToShow: 1,
+      slidesToShow: 2,
       slidesToScroll: 1,
     }
-    console.log(topRatedBooks)
     return (
       <HomeMainContainer>
         <Header />
@@ -126,4 +130,4 @@ class Home extends Component {
     )
   }
 }
-export default Home
+export default connect(store => store)(Home)

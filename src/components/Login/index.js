@@ -13,21 +13,20 @@ import {
 } from './styledComponents'
 
 class Login extends Component {
-  state = {username: '', password: '', text: '', loginStatus: false}
-
   addTextUser = event => {
     const {dispatch} = this.props
     dispatch({
       type: 'LOGIN',
-      payload: event.target.value,
+      payload: {username: event.target.value},
     })
   }
 
   addTextPassword = event => {
+    console.log(event.target.value)
     const {dispatch} = this.props
     dispatch({
       type: 'LOGIN',
-      payload: event.target.value,
+      payload: {password: event.target.value},
     })
   }
 
@@ -41,7 +40,11 @@ class Login extends Component {
   }
 
   loginFailure = errMsg => {
-    this.setState({loginStatus: true, text: errMsg})
+    const {dispatch} = this.props
+    dispatch({
+      type: 'LOGIN',
+      payload: {loginStatus: true, text: errMsg},
+    })
   }
 
   submitDetails = async event => {
@@ -61,11 +64,16 @@ class Login extends Component {
     } else {
       this.loginFailure(data.error_msg)
     }
-    this.setState({username: '', password: ''})
+    const {dispatch} = this.props
+    dispatch({
+      type: 'LOGIN',
+      payload: {username: '', password: ''},
+    })
   }
 
   render() {
-    const {text, password, username, loginStatus} = this.state
+    const {login} = this.props
+    const {text, password, username, loginStatus} = login
     return (
       <LoginContainer>
         <Image

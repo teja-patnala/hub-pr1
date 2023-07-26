@@ -1,0 +1,9 @@
+.cover-image {
+  height: 200px;
+  width: 140px;
+  border-radius: 5px;
+  background-size: cover;
+}
+.book-card-details {
+  margin-left: 10px;
+}

@@ -26,8 +26,8 @@
   width: 70%;
 }
 .bookshelves-para {
-  color: white;
-  font-size: 17px;
+  color: rgb(153, 52, 52);
+  font-size: 19px;
   font-weight: bold;
 }
 .sub1 {
@@ -45,11 +45,31 @@
 .input1 {
   height: 30px;
   width: 200px;
+  border: none;
+  outline: none;
   padding-left: 5px;
+  border-width: 0px;
 }
 .container12 {
   height: 100%;
   width: 100%;
+}
+.search-icon {
+  height: 28px;
+  width: 28px;
+  color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 300px;
+  height: 30px;
+  margin-top: 20px;
+  background-color: white;
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -76,5 +96,8 @@
   .book-container {
     height: 50vh;
     padding-bottom: 10px;
+  }
+  .input-container {
+    width: 250px;
   }
 }

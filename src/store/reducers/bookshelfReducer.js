@@ -4,6 +4,7 @@ const bookshelfState = {
   search: '',
   status: false,
   favBooksId: [],
+  filterValue: 'ALL',
 }
 
 export default function bookshelfReducer(state = bookshelfState, action) {

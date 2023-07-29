@@ -147,12 +147,10 @@ class BookData extends Component {
       aboutAuthor: data.book_details.about_author,
     }
     const {dispatch} = this.props
-
     dispatch({
       type: 'BOOK',
       payload: {bookDetails: bookClearData, status: true},
     })
-    console.log(this.props)
   }
 
   render() {

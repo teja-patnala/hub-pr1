@@ -14,11 +14,11 @@
 }
 @media screen and (max-width: 768px) {
   .slider-item {
-    height: 200px;
+    height: 300px;
     margin-top: 5px;
   }
   .slider-image {
-    height: 120px;
+    height: 200px;
     max-width: 80px;
   }
 }

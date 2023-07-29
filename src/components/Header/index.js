@@ -3,7 +3,6 @@ import 'reactjs-popup/dist/index.css'
 import './index.css'
 import {Link, withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
-
 import {AiOutlineBars} from 'react-icons/ai'
 import {Image2} from './styledComponents'
 
@@ -39,8 +38,11 @@ const Header = props => {
         <Link to="/bookshelves" className="link-font">
           Bookshelves
         </Link>
+        <Link to="/favourites" className="link-font">
+          Favourites
+        </Link>
         <button
-          className="logout-button"
+          className="logout-button link-font"
           onClick={logoutFunction}
           type="button"
         >
@@ -66,8 +68,11 @@ const Header = props => {
             <Link to="/bookshelves" className="link-font">
               Bookshelves
             </Link>
+            <Link to="/favourites" className="link-font">
+              Favourites
+            </Link>
             <button
-              className="logout-button"
+              className="logout-button link-font"
               onClick={logoutFunction}
               type="button"
             >

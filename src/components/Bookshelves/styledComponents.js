@@ -20,7 +20,7 @@ export const FilterButton = styled.button`
   background-color: transparent;
   font-size: 17px;
   font-weight: bold;
-  color: white;
+  color: rgb(195, 7, 195);
   @media screen and (max-width: 768px) {
     border: 3px solid violet;
     font-size: 14px;
@@ -30,6 +30,7 @@ export const FilterButton = styled.button`
 export const UL = styled.ul`
   @media screen and (max-width: 768px) {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 `

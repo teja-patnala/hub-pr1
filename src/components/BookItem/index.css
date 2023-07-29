@@ -7,3 +7,18 @@
 .book-card-details {
   margin-left: 10px;
 }
+.fav-icon {
+  height: 22px;
+  width: 22px;
+  margin: auto;
+}
+.white {
+  color: white;
+}
+.red {
+  color: red;
+}
+.fav-button {
+  border-width: 0px;
+  background-color: transparent;
+}

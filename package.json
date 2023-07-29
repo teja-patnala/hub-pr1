@@ -11,19 +11,14 @@
     "@testing-library/react": "11.2.5",
     "@testing-library/user-event": "12.6.2",
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.3",
-<<<<<<< HEAD
     "chai-http": "4.4.0",
-=======
->>>>>>> origin/main
     "chalk": "4.1.0",
     "enzyme": "3.11.0",
     "history": "5.0.1",
     "jest-styled-components": "7.0.5",
     "js-cookie": "3.0.1",
-<<<<<<< HEAD
+
     "mocha": "10.2.0",
-=======
->>>>>>> origin/main
     "msw": "0.35.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -44,10 +39,7 @@
     "styled-components": "6.0.0-rc.3"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "chai": "4.3.7",
-=======
->>>>>>> origin/main
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-airbnb-base": "14.2.1",

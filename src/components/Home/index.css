@@ -43,7 +43,7 @@
   display: none;
 }
 .footer {
-  margin-left: 40%;
+  width: 90%;
 }
 
 @media screen and (max-width: 768px) {
@@ -62,8 +62,5 @@
   .slider-container1 {
     display: block;
     margin: auto;
-  }
-  .footer {
-    margin-left: 32%;
   }
 }

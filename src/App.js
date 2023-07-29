@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Bookshelves from './components/Bookshelves'
 import NotFound from './components/NotFound'
 import BookData from './components/BookData'
+import Cart from './components/Cart'
 
 // use the below bookshelvesList for rendering read status of book items in Bookshelves Route
 
@@ -19,6 +20,7 @@ class App extends Component {
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/bookshelves" component={Bookshelves} />
           <ProtectedRoute exact path="/books/:id" component={BookData} />
+          <ProtectedRoute exact path="/favourites" component={Cart} />
           <Route component={NotFound} />
         </Switch>
       </>

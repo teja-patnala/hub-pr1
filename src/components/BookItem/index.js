@@ -1,10 +1,25 @@
 import './index.css'
 import {Link} from 'react-router-dom'
+import {AiFillStar} from 'react-icons/ai'
 import {BookItemList, BookPara} from './styledComponents'
 
 const BookItem = props => {
-  const {eachItem} = props
-  const {id, title, readStatus, rating, authorName, coverPic} = eachItem
+  const {eachItem, changeFavStatus} = props
+  const {
+    id,
+    title,
+    favStatus,
+    readStatus,
+    rating,
+    authorName,
+    coverPic,
+  } = eachItem
+
+  const iconColor = favStatus ? 'red' : 'white'
+
+  const changeStatus = () => {
+    changeFavStatus(id)
+  }
 
   return (
     <BookItemList key={id}>
@@ -12,6 +27,9 @@ const BookItem = props => {
         <img src={coverPic} className="cover-image" alt={title} />
       </Link>
       <div className="book-card-details">
+        <button type="button" className="fav-button" onClick={changeStatus}>
+          <AiFillStar className={`fav-icon ${iconColor}`} />
+        </button>
         <BookPara
           color="white"
           fontsize="16px"

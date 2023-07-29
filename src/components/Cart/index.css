@@ -1,0 +1,54 @@
+.book-cart-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-size: cover;
+  background-image: url('https://res.cloudinary.com/dxx7ni6cl/image/upload/v1690397849/photo-1636953056323-9c09fdd74fa6_cekqsh.jpg');
+}
+.sub-book-cart-container {
+  width: 100%;
+  height: 80%;
+  padding-left: 7%;
+  padding-right: 7%;
+  padding-top: 3%;
+}
+.cart-heading {
+  height: 30px;
+  color: white;
+  font-weight: bold;
+  font-family: 'sans-serif';
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+.cart-container {
+  margin: auto;
+  height: 80%;
+  width: 100%;
+  min-width: 350px;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.ul11 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.fav-item {
+  margin: 20px;
+}
+@media screen and (max-width: 768px;) {
+  .sub-book-cart-container {
+    width: 100%;
+    height: 100%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 2%;
+  }
+  .fav-item {
+    margin: 10px;
+  }
+}

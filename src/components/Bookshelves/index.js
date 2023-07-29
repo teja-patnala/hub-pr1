@@ -56,7 +56,6 @@ class Login extends Component {
 
   addSearch = async event => {
     const {dispatch} = this.props
-    console.log(event.target.value)
     await dispatch({
       type: 'BOOKSHELF',
       payload: {search: event.target.value},
@@ -68,7 +67,6 @@ class Login extends Component {
     const {bookshelf} = this.props
     const {filter, search} = bookshelf
     const url = `https://apis.ccbp.in/book-hub/books?shelf=${filter}&search=${search}`
-    console.log(url)
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -85,24 +83,57 @@ class Login extends Component {
       rating: eachItem.rating,
       authorName: eachItem.author_name,
       coverPic: eachItem.cover_pic,
+      favStatus: false,
     }))
     const {dispatch} = this.props
     dispatch({
       type: 'BOOKSHELF',
       payload: {allBooksData: allData, status: true},
     })
-    console.log(this.props)
+  }
+
+  changeFavStatus = async id => {
+    const {bookshelf, dispatch} = this.props
+    const {favBooksId} = bookshelf
+    const checkPresence = favBooksId.includes(id)
+    const alteredFavList = [...favBooksId]
+    if (checkPresence) {
+      const indexOfId = alteredFavList.indexOf(id)
+      alteredFavList.splice(indexOfId, 1)
+    } else {
+      alteredFavList.push(id)
+    }
+    await dispatch({
+      type: 'BOOKSHELF',
+      payload: {favBooksId: [...alteredFavList]},
+    })
   }
 
   render() {
     const {bookshelf} = this.props
-    const {allBooksData, status} = bookshelf
+    const {allBooksData, status, favBooksId} = bookshelf
+    const allBookData1 = allBooksData.map(eachItem => {
+      if (favBooksId.includes(eachItem.id)) {
+        return {
+          ...eachItem,
+          favStatus: !eachItem.favStatus,
+        }
+      }
+      return {
+        ...eachItem,
+        favStatus: false,
+      }
+    })
+
     const getTheUl = () => {
       if (allBooksData.length !== 0) {
         return (
           <ul className="book-container">
-            {allBooksData.map(eachItem => (
-              <BookItem eachItem={eachItem} />
+            {allBookData1.map(eachItem => (
+              <BookItem
+                changeFavStatus={this.changeFavStatus}
+                eachItem={eachItem}
+              />
             ))}
           </ul>
         )
